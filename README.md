@@ -27,7 +27,13 @@ Now, from a worker node (with a **running** *exareme* container), we can run the
 ```
 
 If the result is not "ok", it should be "FAIL!". This means that the kernel is not anymore compatible with the Docker Swarm networking.
-Then, we have to fix the kernel with the following command, as well from within this repository:
+If the *exareme* container was not running on the node, we can deploy it, from the **pusher** node, with the following command:
+
+```
+mip --pusher --federation <FEDERATION_NAME> --node <NODE_NAME> service deploy
+```
+
+If the *docker_swarm_comm_check.sh* command did "FAIL!", we have to fix the kernel with the following command, as well from within this repository:
 
 ```
 sudo ./kernel_version_fix.sh
